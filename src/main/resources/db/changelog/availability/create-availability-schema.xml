@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-tbl_availability_06_09_2025_06_47" author="${author1}" context="${context_development}">
+        <comment>Create Attendance Schema</comment>
+
+        <createTable tableName="${tbl_availability}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_availability_user"
+                             references="${tbl_user}(id)"/>
+            </column>
+            <column name="date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-unique-constraint_06_09_2025_06_50" author="${author1}" context="${context_development}">
+        <addUniqueConstraint tableName="${tbl_availability}"
+                             columnNames="user_id,date,start_time"
+                             constraintName="uk_availability_user_date_time"/>
+    </changeSet>
+
+</databaseChangeLog>

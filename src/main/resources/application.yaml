@@ -7,8 +7,15 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/master-changelog.xml
+    contexts: development
+    default-schema: tms_prototype_db
+    liquibase-schema: tms_prototype_db
+    drop-first: false
 
 server:
   port: 8080

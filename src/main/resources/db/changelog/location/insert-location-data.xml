@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="insert-tbl_location-data_06_09_2025_07_23" author="${author1}" context="${context_development}">
+        <comment>Insert India, its 28 states, and major cities</comment>
+
+        <!-- Insert Country: India -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="India"/>
+            <column name="location_type" value="COUNTRY"/>
+            <column name="parent_id" value="NULL"/>
+        </insert>
+
+        <!-- Insert States -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Andhra Pradesh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Arunachal Pradesh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Assam"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Bihar"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Chhattisgarh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Goa"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Gujarat"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Haryana"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Himachal Pradesh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Jharkhand"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Karnataka"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Kerala"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Madhya Pradesh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Maharashtra"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Manipur"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Meghalaya"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Mizoram"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Nagaland"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Odisha"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Punjab"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Rajasthan"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Sikkim"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Tamil Nadu"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Telangana"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Tripura"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Uttar Pradesh"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Uttarakhand"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="West Bengal"/>
+            <column name="location_type" value="STATE"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'India')"/>
+        </insert>
+
+        <!-- Insert Cities (2-4 per state) -->
+        <!-- Andhra Pradesh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Visakhapatnam"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Andhra Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Vijayawada"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Andhra Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Guntur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Andhra Pradesh')"/>
+        </insert>
+        <!-- Arunachal Pradesh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Itanagar"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Arunachal Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Tawang"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Arunachal Pradesh')"/>
+        </insert>
+        <!-- Assam -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Guwahati"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Assam')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Dibrugarh"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Assam')"/>
+        </insert>
+        <!-- Bihar -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Patna"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Bihar')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Gaya"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Bihar')"/>
+        </insert>
+        <!-- Chhattisgarh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Raipur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Chhattisgarh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Bilaspur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Chhattisgarh')"/>
+        </insert>
+        <!-- Goa -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Panaji"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Goa')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Margao"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Goa')"/>
+        </insert>
+        <!-- Gujarat -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Ahmedabad"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Gujarat')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Surat"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Gujarat')"/>
+        </insert>
+        <!-- Haryana -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Gurgaon"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Haryana')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Faridabad"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Haryana')"/>
+        </insert>
+        <!-- Himachal Pradesh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Shimla"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Himachal Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Dharamshala"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Himachal Pradesh')"/>
+        </insert>
+        <!-- Jharkhand -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Ranchi"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Jharkhand')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Jamshedpur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Jharkhand')"/>
+        </insert>
+        <!-- Karnataka -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Bengaluru"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Karnataka')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Mysuru"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Karnataka')"/>
+        </insert>
+        <!-- Kerala -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Thiruvananthapuram"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Kerala')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Kochi"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Kerala')"/>
+        </insert>
+        <!-- Madhya Pradesh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Bhopal"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Madhya Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Indore"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Madhya Pradesh')"/>
+        </insert>
+        <!-- Maharashtra -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Mumbai"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Maharashtra')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Pune"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Maharashtra')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Nagpur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Maharashtra')"/>
+        </insert>
+        <!-- Manipur -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Imphal"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Manipur')"/>
+        </insert>
+        <!-- Meghalaya -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Shillong"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Meghalaya')"/>
+        </insert>
+        <!-- Mizoram -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Aizawl"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Mizoram')"/>
+        </insert>
+        <!-- Nagaland -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Kohima"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Nagaland')"/>
+        </insert>
+        <!-- Odisha -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Bhubaneswar"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Odisha')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Cuttack"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Odisha')"/>
+        </insert>
+        <!-- Punjab -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Amritsar"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Punjab')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Ludhiana"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Punjab')"/>
+        </insert>
+        <!-- Rajasthan -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Jaipur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Rajasthan')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Jodhpur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Rajasthan')"/>
+        </insert>
+        <!-- Sikkim -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Gangtok"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Sikkim')"/>
+        </insert>
+        <!-- Tamil Nadu -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Chennai"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Tamil Nadu')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Coimbatore"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Tamil Nadu')"/>
+        </insert>
+        <!-- Telangana -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Hyderabad"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Telangana')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Warangal"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Telangana')"/>
+        </insert>
+        <!-- Tripura -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Agartala"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Tripura')"/>
+        </insert>
+        <!-- Uttar Pradesh -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Lucknow"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Uttar Pradesh')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Kanpur"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Uttar Pradesh')"/>
+        </insert>
+        <!-- Uttarakhand -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Dehradun"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Uttarakhand')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Haridwar"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'Uttarakhand')"/>
+        </insert>
+        <!-- West Bengal -->
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Kolkata"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'West Bengal')"/>
+        </insert>
+        <insert tableName="${tbl_location}">
+            <column name="name" value="Darjeeling"/>
+            <column name="location_type" value="CITY"/>
+            <column name="parent_id" valueComputed="(SELECT id FROM ${tbl_location} WHERE name = 'West Bengal')"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-tbl_user__06_09_2025_07_17" author="${author1}" context="${context_development}">
+        <comment>Create User Schema</comment>
+
+        <createTable tableName="${tbl_user}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="ENUM('TRAINER', 'TRAINEE', 'ADMIN')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_id" type="INT">
+                <constraints nullable="true"
+                             foreignKeyName="fk_user_location"
+                             references="${tbl_location}(id)"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="expertise" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="enrollment_date" type="DATE">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-check-constraint_06_09_2025_07_20" author="${author1}" context="${context_development}">
+        <comment>
+            Enforces that tbl_user.location_id must point to a CITY location
+            by using a trigger, as CHECK constraints do not support subqueries in MariaDB.
+        </comment>
+        <sql endDelimiter="//" splitStatements="true">
+            CREATE TRIGGER enforce_city_location_on_user
+                BEFORE INSERT ON tbl_user
+                FOR EACH ROW
+            BEGIN
+                DECLARE location_count INT;
+
+                IF NEW.location_id IS NOT NULL THEN
+                    SELECT COUNT(*)
+                    INTO location_count
+                    FROM tbl_location
+                    WHERE id = NEW.location_id AND location_type = 'CITY';
+
+                    IF location_count = 0 THEN
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'Location ID must reference a location with a CITY type.';
+                    END IF;
+                END IF;
+            END;
+            //
+
+            CREATE TRIGGER enforce_city_location_on_user_update
+                BEFORE UPDATE ON tbl_user
+                FOR EACH ROW
+            BEGIN
+                DECLARE location_count INT;
+
+                IF NEW.location_id IS NOT NULL THEN
+                    SELECT COUNT(*)
+                    INTO location_count
+                    FROM tbl_location
+                    WHERE id = NEW.location_id AND location_type = 'CITY';
+
+                    IF location_count = 0 THEN
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'Location ID must reference a location with a CITY type.';
+                    END IF;
+                END IF;
+            END;
+            //
+        </sql>
+        <rollback>
+            <sql>
+                DROP TRIGGER enforce_city_location_on_user;
+                DROP TRIGGER enforce_city_location_on_user_update;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

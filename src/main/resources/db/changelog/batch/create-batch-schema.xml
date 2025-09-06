@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="20250906-5-create-tbl_batch_06_09_2025_06_55" author="${author1}" context="${context_development}">
+        <comment>Create Batch Schema</comment>
+
+        <createTable tableName="${tbl_batch}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="course_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_batch_course"
+                             references="${tbl_course}(id)"/>
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_batch_user"
+                             references="${tbl_user}(id)"/>
+            </column>
+            <column name="location_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_batch_location"
+                             references="${tbl_location}(id)"/>
+            </column>
+            <column name="start_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="max_capacity" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-check-constraints_06_09_2025_06_57" author="${author1}" context="${context_development}">
+        <sql endDelimiter="//" splitStatements="true">
+            CREATE TRIGGER enforce_batch_constraints
+                BEFORE INSERT ON tbl_batch
+                FOR EACH ROW
+            BEGIN
+                DECLARE user_count INT;
+                DECLARE location_count INT;
+
+                -- Check if the user is a trainer
+                SELECT COUNT(*) INTO user_count
+                FROM tbl_user
+                WHERE id = NEW.user_id AND role = 'TRAINEE';
+
+                IF user_count = 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'User must have the role of TRAINEE.';
+                END IF;
+
+                -- Check if the location is a CITY
+                SELECT COUNT(*) INTO location_count
+                FROM tbl_location
+                WHERE id = NEW.location_id AND location_type = 'CITY';
+
+                IF location_count = 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'Location must have the type of CITY.';
+                END IF;
+            END;
+            //
+
+            CREATE TRIGGER enforce_batch_constraints_update
+                BEFORE UPDATE ON tbl_batch
+                FOR EACH ROW
+            BEGIN
+                DECLARE user_count INT;
+                DECLARE location_count INT;
+
+                -- Check if the user is a trainer
+                SELECT COUNT(*) INTO user_count
+                FROM tbl_user
+                WHERE id = NEW.user_id AND role = 'TRAINEE';
+
+                IF user_count = 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'User must have the role of TRAINER.';
+                END IF;
+
+                -- Check if the location is a CITY
+                SELECT COUNT(*) INTO location_count
+                FROM tbl_location
+                WHERE id = NEW.location_id AND location_type = 'CITY';
+
+                IF location_count = 0 THEN
+                    SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'Location must have the type of CITY.';
+                END IF;
+            END;
+            //
+        </sql>
+        <rollback>
+            <sql>
+                DROP TRIGGER enforce_batch_constraints;
+                DROP TRIGGER enforce_batch_constraints_update;
+            </sql>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

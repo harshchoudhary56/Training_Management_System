@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create_tbl_attendance_06_09_2025_06_36" author="${author1}" context="${context_development}">
+        <comment>Create Attendance Schema</comment>
+        <createTable tableName="${tbl_attendance}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="session_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_attendance_session"
+                             references="${tbl_session}(id)"/>
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_attendance_user"
+                             references="${tbl_user}(id)"/>
+            </column>
+            <column name="marked_at" type="TIMESTAMP" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="ENUM('PRESENT', 'ABSENT')">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add_unique_constraint_06_09_2025_06_43" author="${author1}" context="${context_development}">
+        <addUniqueConstraint tableName="${tbl_attendance}"
+                             columnNames="session_id,user_id"
+                             constraintName="uk_attendance_session_user"/>
+    </changeSet>
+
+</databaseChangeLog>
