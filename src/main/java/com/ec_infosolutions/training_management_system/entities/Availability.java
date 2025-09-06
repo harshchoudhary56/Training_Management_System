@@ -1,6 +1,5 @@
 package com.ec_infosolutions.training_management_system.entities;
 
-import com.ec_infosolutions.training_management_system.constants.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,28 +8,23 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_availability")
+public class Availability {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String email;
-
-    private String password;
-
-    private Role role;
-
     @ManyToOne
-    private Location location;
+    private User user;
 
-    private String firstName;
-    private String lastName;
-    private String expertise;
-    private Date enrollmentDate;
+    private Date date;
+
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 }

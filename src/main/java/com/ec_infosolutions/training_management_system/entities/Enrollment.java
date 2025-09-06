@@ -1,11 +1,10 @@
 package com.ec_infosolutions.training_management_system.entities;
 
-import com.ec_infosolutions.training_management_system.constants.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -13,24 +12,18 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_enrollment")
+public class Enrollment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String email;
+    @OneToOne
+    private Batch batch;
 
-    private String password;
+    @OneToOne
+    private User user;
 
-    private Role role;
-
-    @ManyToOne
-    private Location location;
-
-    private String firstName;
-    private String lastName;
-    private String expertise;
     private Date enrollmentDate;
 }
