@@ -1,6 +1,5 @@
 package com.ec_infosolutions.training_management_system.entities;
 
-import com.ec_infosolutions.training_management_system.constants.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,24 +12,23 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_batch")
+public class Batch {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String email;
+    @ManyToOne
+    private Course course;
 
-    private String password;
-
-    private Role role;
+    @ManyToOne
+    private User user;
 
     @ManyToOne
     private Location location;
 
-    private String firstName;
-    private String lastName;
-    private String expertise;
-    private Date enrollmentDate;
+    private Date startDate;
+    private Date endDate;
+    private Integer maxCapacity;
 }

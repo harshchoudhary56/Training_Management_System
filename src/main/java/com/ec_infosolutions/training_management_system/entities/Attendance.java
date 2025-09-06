@@ -1,6 +1,6 @@
 package com.ec_infosolutions.training_management_system.entities;
 
-import com.ec_infosolutions.training_management_system.constants.Role;
+import com.ec_infosolutions.training_management_system.constants.AttendanceStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,24 +13,19 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_attendance")
+public class Attendance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String email;
-
-    private String password;
-
-    private Role role;
+    @ManyToOne
+    private Session session;
 
     @ManyToOne
-    private Location location;
+    private User user;
 
-    private String firstName;
-    private String lastName;
-    private String expertise;
-    private Date enrollmentDate;
+    private Date markedAt;
+    private AttendanceStatus status;
 }
