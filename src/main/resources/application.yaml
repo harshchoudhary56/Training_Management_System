@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Training_Management_System
+  datasource:
+    url: jdbc:mariadb://localhost:3305/tms_prototype_db
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8080
