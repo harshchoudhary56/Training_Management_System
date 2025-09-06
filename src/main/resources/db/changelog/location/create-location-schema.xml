@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-tbl_location_06_09_2025_07_06" author="${author1}" context="${context_development}">
+        <comment>Create Location Schema</comment>
+
+        <createTable tableName="${tbl_location}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location_type" type="ENUM('COUNTRY', 'STATE', 'CITY')">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="INT">
+                <constraints nullable="true"
+                             foreignKeyName="fk_location_parent"
+                             references="${tbl_location}(id)"
+                             />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-hierarchy-constraint_06_09_2025_07_09" author="${author1}" context="${context_development}">
+        <comment>Add trigger to enforce location hierarchy</comment>
+        <sql endDelimiter="//">
+            CREATE TRIGGER check_location_hierarchy_before_insert
+                BEFORE INSERT ON tbl_location
+                FOR EACH ROW
+            BEGIN
+                DECLARE parent_type VARCHAR(20);
+
+                -- Rule 1: A COUNTRY location cannot have a parent.
+                IF NEW.location_type = 'COUNTRY' AND NEW.parent_id IS NOT NULL THEN
+                    SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'COUNTRY cannot have a parent_id';
+
+                -- Rule 2: A STATE must have a parent that is a COUNTRY.
+                ELSEIF NEW.location_type = 'STATE' THEN
+                    IF NEW.parent_id IS NULL THEN
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'STATE must have a parent_id referencing a COUNTRY';
+                ELSE
+                        -- Look up the parent's location_type
+                    SELECT location_type INTO parent_type
+                    FROM tbl_location
+                    WHERE id = NEW.parent_id;
+
+                    IF parent_type != 'COUNTRY' THEN
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'STATE must have a parent_id referencing a COUNTRY';
+                    END IF;
+                END IF;
+
+                -- Rule 3: A CITY must have a parent that is a STATE.
+                ELSEIF NEW.location_type = 'CITY' THEN
+                    IF NEW.parent_id IS NULL THEN
+                        SIGNAL SQLSTATE '45000'
+                        SET MESSAGE_TEXT = 'CITY must have a parent_id referencing a STATE';
+                    ELSE
+                        -- Look up the parent's location_type
+                        SELECT location_type INTO parent_type
+                        FROM tbl_location
+                        WHERE id = NEW.parent_id;
+                        IF parent_type != 'STATE' THEN
+                            SIGNAL SQLSTATE '45000'
+                            SET MESSAGE_TEXT = 'CITY must have a parent_id referencing a STATE';
+                        END IF;
+                    END IF;
+                END IF;
+            END;
+            //
+        </sql>
+        <rollback>
+            DROP TRIGGER check_location_hierarchy_before_insert;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

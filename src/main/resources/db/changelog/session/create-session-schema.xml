@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="create-tbl_session_06_09_2025_07_11" author="${author1}" context="${context_development}">
+        <comment>Create Session Schema</comment>
+
+        <createTable tableName="${tbl_session}">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="batch_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_session_batch"
+                             references="${tbl_batch}(id)"/>
+            </column>
+            <column name="date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="end_time" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="add-unique-constraint_06_09_2025_07_14" author="${author1}" context="${context_development}">
+        <addUniqueConstraint tableName="${tbl_session}"
+                             columnNames="batch_id,date,start_time"
+                             constraintName="uk_session_batch_date_time"/>
+    </changeSet>
+
+</databaseChangeLog>
