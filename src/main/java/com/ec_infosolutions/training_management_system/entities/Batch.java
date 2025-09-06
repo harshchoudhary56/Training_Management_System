@@ -1,5 +1,6 @@
 package com.ec_infosolutions.training_management_system.entities;
 
+import com.ec_infosolutions.training_management_system.constants.BatchStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +28,8 @@ public class Batch {
 
     @ManyToOne
     private Location location;
+
+    private BatchStatus status;
 
     private Date startDate;
     private Date endDate;

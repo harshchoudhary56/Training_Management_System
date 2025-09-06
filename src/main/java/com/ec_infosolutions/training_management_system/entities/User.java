@@ -1,6 +1,7 @@
 package com.ec_infosolutions.training_management_system.entities;
 
 import com.ec_infosolutions.training_management_system.constants.Role;
+import com.ec_infosolutions.training_management_system.constants.UserStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,8 @@ public class User {
 
     @ManyToOne
     private Location location;
+
+    private UserStatus status;
 
     private String firstName;
     private String lastName;

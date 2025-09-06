@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <changeSet id="create-tbl_user__06_09_2025_07_17" author="${author1}" context="${context_development}">
+    <changeSet id="create-tbl_user_06_09_2025_07_17" author="${author1}" context="${context_development}">
         <comment>Create User Schema</comment>
 
         <createTable tableName="${tbl_user}">
@@ -92,6 +92,19 @@
                 DROP TRIGGER enforce_city_location_on_user;
                 DROP TRIGGER enforce_city_location_on_user_update;
             </sql>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="add-user-status-column-06_09_2025_11_13" author="${author1}" context="${context_development}">
+        <comment>Adds the 'status' column to the 'tbl_user' table to track user status (e.g., ACTIVE, INACTIVE).</comment>
+
+        <addColumn tableName="${tbl_user}">
+            <column name="status" type="ENUM('ACTIVE', 'INACTIVE')" defaultValue="ACTIVE">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <rollback>
+            <dropColumn tableName="${tbl_user}" columnName="status"/>
         </rollback>
     </changeSet>
 

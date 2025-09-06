@@ -1,4 +1,4 @@
-package com.ec_infosolutions.training_management_system.dto;
+package com.ec_infosolutions.training_management_system.request;
 
 import lombok.Data;
 

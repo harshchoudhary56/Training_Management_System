@@ -64,7 +64,7 @@ public class SecurityConfigForJWT {
 
 
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/user/auth/generate-token", "/user/auth/refresh-token", "/user/auth/register").permitAll()
+                        .requestMatchers("/user/auth/generate-token", "/user/auth/refresh-token", "/api/v1/users/register").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))

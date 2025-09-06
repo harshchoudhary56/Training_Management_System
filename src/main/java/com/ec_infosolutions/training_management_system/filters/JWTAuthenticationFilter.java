@@ -1,6 +1,6 @@
 package com.ec_infosolutions.training_management_system.filters;
 
-import com.ec_infosolutions.training_management_system.dto.LoginRequest;
+import com.ec_infosolutions.training_management_system.request.LoginRequest;
 import com.ec_infosolutions.training_management_system.util.JWTUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
