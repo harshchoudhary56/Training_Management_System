@@ -27,7 +27,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        if (!request.getServletPath().equals("/user/auth/generate-token")) {
+        if (!request.getServletPath().equals("/tms/api/v1/users/auth/generate-token")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -50,7 +50,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
             Cookie refreshCookie = new Cookie("refreshToken", refreshToken);
             refreshCookie.setHttpOnly(true); //prevent javascript from accessing it
             refreshCookie.setSecure(true); // sent only over HTTPS
-            refreshCookie.setPath("/user/auth/refresh-token"); // Cookie available only for refresh endpoint
+            refreshCookie.setPath("/tms/api/v1/users/auth/refresh-token"); // Cookie available only for refresh endpoint
             refreshCookie.setMaxAge(7 * 24 * 60 * 60); // 7 days expiry
             response.addCookie(refreshCookie);
         }

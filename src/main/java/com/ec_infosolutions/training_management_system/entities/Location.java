@@ -2,6 +2,8 @@ package com.ec_infosolutions.training_management_system.entities;
 
 import com.ec_infosolutions.training_management_system.constants.LocationType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,6 +21,8 @@ public class Location {
     private Integer id;
 
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private LocationType locationType;
 
     @OneToOne

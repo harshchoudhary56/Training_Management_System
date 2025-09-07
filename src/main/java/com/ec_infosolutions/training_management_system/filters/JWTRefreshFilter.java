@@ -25,7 +25,7 @@ public class JWTRefreshFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        if (!request.getServletPath().equals("/user/auth/refresh-token")) {
+        if (!request.getServletPath().equals("/tms/api/v1/users/auth/refresh-token")) {
             filterChain.doFilter(request, response);
             return;
         }

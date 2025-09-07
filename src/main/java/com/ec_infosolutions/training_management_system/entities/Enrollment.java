@@ -8,7 +8,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -25,5 +25,5 @@ public class Enrollment {
     @OneToOne
     private User user;
 
-    private Date enrollmentDate;
+    private LocalDate enrollmentDate;
 }

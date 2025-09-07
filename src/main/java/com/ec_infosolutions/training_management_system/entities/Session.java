@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -23,8 +23,8 @@ public class Session {
     @ManyToOne
     private Batch batch;
 
-    private Date date;
-    private LocalDate startTime;
-    private LocalDate endTime;
+    private LocalDate date;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
 }

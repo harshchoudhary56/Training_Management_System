@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -26,6 +26,6 @@ public class Attendance {
     @ManyToOne
     private User user;
 
-    private Date markedAt;
+    private LocalDate markedAt;
     private AttendanceStatus status;
 }

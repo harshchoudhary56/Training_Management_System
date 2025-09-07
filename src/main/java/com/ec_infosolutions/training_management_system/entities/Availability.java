@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -23,7 +22,7 @@ public class Availability {
     @ManyToOne
     private User user;
 
-    private Date date;
+    private LocalDateTime date;
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;
