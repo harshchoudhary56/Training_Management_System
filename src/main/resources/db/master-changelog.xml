@@ -30,6 +30,8 @@
     <property name="tbl_location" value="tbl_location"/>
     <property name="tbl_session" value="tbl_session"/>
     <property name="tbl_user" value="tbl_user"/>
+    <property name="tbl_role" value="tbl_role"/>
+    <property name="tbl_permission" value="tbl_permission"/>
 
     <!--    Pre conditions-->
     <preConditions onFail="HALT" onFailMessage="Unauthorized Access">
@@ -42,7 +44,11 @@
     <include file="changelog/course/create-course-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/location/create-location-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/location/insert-location-data.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/role/create-role-schema.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/role/insert-role-data.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/permission/create-permission-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/user/create-user-schema.xml" relativeToChangelogFile="true"/>
+    <include file="changelog/user/insert-user-data.xml" relativeToChangelogFile="true"/>
     <include file="changelog/availability/create-availability-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/batch/create-batch-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/session/create-session-schema.xml" relativeToChangelogFile="true"/>

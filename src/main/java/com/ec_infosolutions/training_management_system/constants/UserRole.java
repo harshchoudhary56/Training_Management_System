@@ -1,6 +1,6 @@
 package com.ec_infosolutions.training_management_system.constants;
 
-public enum Role {
+public enum UserRole {
 
-    TRAINER, TRAINEE, ADMIN
+    ROLE_TRAINER, ROLE_TRAINEE, ROLE_ADMIN
 }

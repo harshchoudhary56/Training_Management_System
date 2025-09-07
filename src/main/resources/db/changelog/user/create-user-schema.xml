@@ -18,8 +18,10 @@
             <column name="password" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="role" type="ENUM('TRAINER', 'TRAINEE', 'ADMIN')">
-                <constraints nullable="false"/>
+            <column name="role_id" type="INT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_user_roll"
+                             references="${tbl_role}(id)"/>
             </column>
             <column name="location_id" type="INT">
                 <constraints nullable="true"

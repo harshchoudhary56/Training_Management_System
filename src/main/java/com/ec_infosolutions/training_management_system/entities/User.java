@@ -1,6 +1,5 @@
 package com.ec_infosolutions.training_management_system.entities;
 
-import com.ec_infosolutions.training_management_system.constants.Role;
 import com.ec_infosolutions.training_management_system.constants.UserStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,11 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Entity
@@ -28,11 +27,11 @@ public class User {
 
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
-
     @ManyToOne
     private Location location;
+
+    @OneToOne
+    private Role role;
 
     @Enumerated(EnumType.STRING)
     private UserStatus status;
