@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="insert_tbl_user_data_07_09_2025_09_33" author="${author1}" context="${context_development}">
+        <comment>Inserting a user with role ADMIN and default location as Dehradun</comment>
+
+        <insert tableName="${tbl_user}">
+            <column name="email" value="harsh@gmail.com"/>
+            <column name="password" value="$2a$12$8UlLzincGcC07sO8MOOZ5uDrk4TQyyw7N.xJuktzCBtJZe1Krsoaa"/>
+            <column name="role_id" value="3"/>
+            <column name="location_id" value="78"/>
+            <column name="first_name" value="Harsh"/>
+            <column name="last_name" value="Choudhary"/>
+            <column name="expertise" value="Full Stack Developer"/>
+            <column name="enrollment_date" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="status" value="ACTIVE"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
