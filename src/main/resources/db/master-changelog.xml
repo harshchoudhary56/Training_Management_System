@@ -54,8 +54,7 @@
     <include file="changelog/session/create-session-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/attendance/create-attendance-schema.xml" relativeToChangelogFile="true"/>
     <include file="changelog/enrollment/create-enrollment-schema.xml" relativeToChangelogFile="true"/>
-
-
+    <include file="changelog/course/insert-course-data.xml" relativeToChangelogFile="true"/>
 
 
 
