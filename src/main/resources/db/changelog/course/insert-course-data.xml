@@ -1,0 +1,92 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet id="insert-tbl_course-20250908" author="${author1}" context="${context_development}">
+
+        <insert tableName="${tbl_course}">
+            <column name="name" value="Java Programming Fundamentals"/>
+            <column name="description" value="Learn the basics of Java, including syntax, object-oriented programming, and core libraries for building robust applications."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Advanced Spring Boot"/>
+            <column name="description" value="Master Spring Boot for building scalable, production-ready RESTful APIs and microservices with Java."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Python for Data Science"/>
+            <column name="description" value="Explore Python programming with a focus on data analysis, visualization, and machine learning using libraries like Pandas and Scikit-learn."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="AWS Cloud Practitioner"/>
+            <column name="description" value="Introduction to Amazon Web Services, covering core services like EC2, S3, and IAM for cloud computing."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="DevOps with Docker and Kubernetes"/>
+            <column name="description" value="Learn containerization with Docker and orchestration with Kubernetes for modern CI/CD pipelines."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Full Stack Web Development"/>
+            <column name="description" value="Build end-to-end web applications using HTML, CSS, JavaScript, React, Node.js, and databases."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Cybersecurity Essentials"/>
+            <column name="description" value="Understand cybersecurity principles, including encryption, network security, and ethical hacking techniques."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Machine Learning with TensorFlow"/>
+            <column name="description" value="Dive into machine learning concepts and build models using TensorFlow for real-world applications."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Database Management with SQL"/>
+            <column name="description" value="Master SQL for designing, querying, and managing relational databases like MySQL and PostgreSQL."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="React.js for Front-End Development"/>
+            <column name="description" value="Learn to build dynamic, component-based user interfaces with React.js and modern JavaScript."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Node.js and Express"/>
+            <column name="description" value="Develop server-side applications and RESTful APIs using Node.js and the Express framework."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Cloud Architecture with Azure"/>
+            <column name="description" value="Design and deploy scalable cloud solutions using Microsoft Azure services and tools."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Blockchain Fundamentals"/>
+            <column name="description" value="Explore blockchain technology, smart contracts, and decentralized applications using Ethereum."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Go Programming Language"/>
+            <column name="description" value="Learn Go for building fast, concurrent, and scalable backend systems and microservices."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Big Data with Hadoop and Spark"/>
+            <column name="description" value="Process and analyze large datasets using Hadoop and Apache Spark for big data applications."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Mobile App Development with Flutter"/>
+            <column name="description" value="Build cross-platform mobile apps for iOS and Android using Google’s Flutter framework."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Artificial Intelligence Basics"/>
+            <column name="description" value="Introduction to AI concepts, including neural networks, NLP, and computer vision."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Microservices with Spring Cloud"/>
+            <column name="description" value="Learn to build and deploy microservices using Spring Cloud, Eureka, and API gateways."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Linux System Administration"/>
+            <column name="description" value="Master Linux administration, including shell scripting, system configuration, and security."/>
+        </insert>
+        <insert tableName="tbl_course">
+            <column name="name" value="Agile and Scrum for Developers"/>
+            <column name="description" value="Learn Agile methodologies and Scrum practices for effective software development and team collaboration."/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
